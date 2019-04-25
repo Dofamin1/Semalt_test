@@ -5,14 +5,15 @@
   "author": "",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
+    "nuxt_dev": "nuxt",
+    "api_dev": "node server/index.js",
+    "build nuxt": "nuxt build",
+    "generate nuxt": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
