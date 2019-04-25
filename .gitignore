@@ -1,0 +1,9 @@
+# logs
+nuxtServer/npm-debug.log
+
+# Nuxt build
+nuxtServer/nuxt
+
+# Nuxt generate
+nuxtServer/dist
+node_modules
