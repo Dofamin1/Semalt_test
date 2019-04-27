@@ -1,12 +1,15 @@
 <template >
   <div>
-    <div class="auditIndex">{{index + 1}}</div>
+    <div class="auditNumber">{{index + 1}}</div>
     <span>{{auditItem.title}}</span>
     <span
       v-if="activeMenuItem == 'byOpportunity'"
-      :class="`score ${colorOfTime}`"
-    >{{timeToImprove}} ms</span>
-    <span v-if="activeMenuItem == 'byScore'" :class="`score ${colorOfScore}`">{{auditItem.score}}</span>
+      :class="`measurements ${colorOfTime}`"
+    >{{timeToImprove}}</span>
+    <span
+      v-if="activeMenuItem == 'byScore'"
+      :class="`measurements ${colorOfScore}`"
+    >{{auditItem.score}}</span>
   </div>
 </template>
     
@@ -28,41 +31,41 @@ export default {
   computed: {
     ...mapState(["activeMenuItem"]),
     colorOfScore() {
-      return this.auditItem.score < 0.7 ? "redScore" : "greenScore";
+      return this.auditItem.score < 0.7 ? "redText" : "greenText";
     },
     colorOfTime() {
       return this.auditItem.details.overallSavingsMs < 100
-        ? "greenScore"
-        : "redScore";
+        ? "greenText"
+        : "redText";
     },
     timeToImprove() {
       return this.auditItem.details.overallSavingsMs <= 0
-        ? 0
-        : this.auditItem.details.overallSavingsMs;
+        ? "~0 (minimal time)"
+        : `${this.auditItem.details.overallSavingsMs} ms`;
     }
   }
 };
 </script>
 
 <style>
-.auditIndex {
+.auditNumber {
   display: inline-block;
   margin-right: 2%;
   color: #325199;
   font-weight: 500;
 }
-.score {
+.measurements {
   display: inline-block;
   float: right;
   margin-right: 10%;
   color: #325199;
   font-weight: 500;
 }
-.redScore {
+.redText {
   color: red;
   font-weight: 800;
 }
-.greenScore {
+.greenText {
   color: green;
   font-weight: 800;
 }
