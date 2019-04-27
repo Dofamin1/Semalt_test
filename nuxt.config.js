@@ -29,11 +29,11 @@ module.exports = {
    ** Build configuration
    */
   modules: [
-    ["@nuxtjs/proxy", { pathRewrite: { "/api": "http://localhost:5000" } }],
+    ["@nuxtjs/proxy", { pathRewrite: { "/api": "http://localhost:5100" } }],
     "@nuxtjs/axios"
   ],
   proxy: {
-    "/api": "http://localhost:5000"
+    "/api": "http://localhost:5100"
   },
   css: [
     {
