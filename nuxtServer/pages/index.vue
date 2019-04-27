@@ -1,9 +1,16 @@
 <template>
-  <div>semalti test</div>
+  <AuditTable></AuditTable>
 </template>
 
 <script>
-export default {};
+import AuditTable from "../components/AuditTable.vue";
+
+export default {
+  layout: "header",
+  components: {
+    AuditTable
+  }
+};
 </script>
 
 <style>
