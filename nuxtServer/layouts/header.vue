@@ -1,13 +1,39 @@
 <template>
   <div>
     <v-app>
-      <v-tabs color="cyan" dark slider-color="yellow">
-        <v-tab v-for="n in 3" :key="n" ripple>Item {{ n }}</v-tab>
+      <v-tabs color="indigo darken-4" v-model="activeMenuItemWrapper" dark slider-color="yellow">
+        <v-tab v-for="(item, index) in menuItems" :key="index" ripple>{{ item.title }}</v-tab>
       </v-tabs>
       <nuxt/>
     </v-app>
   </div>
 </template>
+
+<script>
+const menuItems = [
+  { title: "By opportunity to improve", value: "byOpportunity" },
+  { title: "By score of dimensions", value: "byScore" },
+  { title: "All dimensions", value: "all" }
+];
+import { mapMutations, mapState } from "vuex";
+export default {
+  computed: {
+    ...mapState(["activeMenuItem"]),
+    menuItems: () => menuItems,
+    activeMenuItemWrapper: {
+      get() {
+        return this.menuItems.indexOf(this.activeMenuItem);
+      },
+      set(index) {
+        this.setActiveMenuItem(menuItems[index].value);
+      }
+    }
+  },
+  methods: {
+    ...mapMutations(["setActiveMenuItem"])
+  }
+};
+</script>
 
 <style>
 html {
