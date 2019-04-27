@@ -25,10 +25,10 @@ export default {
     ...mapState(["audits", "activeMenuItem"]),
     description() {
       return ({ description }) => {
-        const partedDesc = description.split("[Learn more]");
-        if (partedDesc.length > 1) {
-          const text = partedDesc[0];
-          let ref = partedDesc[1].replace(")", "").replace("(", "");
+        const descAndRef = description.split("[Learn more]");
+        if (descAndRef.length > 1) {
+          const text = descAndRef[0];
+          let ref = descAndRef[1].replace(")", "").replace("(", "");
           ref[ref.length - 1] === "." &&
             (() => (ref = ref.substring(0, ref.length - 1)))();
           return `<span>${text} <a href = ${ref}>Learn more</a></span>`;
@@ -44,21 +44,23 @@ export default {
       if (this.activeMenuItem == "byOpportunity") {
         filterCallback = ({ details }) =>
           details && details.type == "opportunity";
+
         sortCallback = (a, b) => {
-          if (a.details.overallSavingsMs < b.details.overallSavingsMs) return 1;
-          if (a.details.overallSavingsMs > b.details.overallSavingsMs)
+          if (a.details.overallSavingsMs > b.details.overallSavingsMs) return 1;
+          if (a.details.overallSavingsMs < b.details.overallSavingsMs)
             return -1;
           return 0;
         };
       } else if (this.activeMenuItem == "byScore") {
         filterCallback = ({ details, scoreDisplayMode }) =>
           details && scoreDisplayMode == "numeric";
+
         sortCallback = (a, b) => {
           if (a.score < b.score) return 1;
           if (a.score > b.score) return -1;
           return 0;
         };
-      } else if (this.activeMenuItem == "all") return this.audits;
+      } else return this.audits;
 
       return this.audits.filter(filterCallback).sort(sortCallback);
     }
