@@ -18,11 +18,11 @@ class DataService {
     return axios
       .get(this.url)
       .then(({ data }) => {
-        const strigifiedData = JSON.stringify(data.lighthouseResult.audits);
-        const newChecksum = this.generateChecksum(strigifiedData);
+        const stringifiedData = JSON.stringify(data.lighthouseResult.audits);
+        const newChecksum = this.generateChecksum(stringifiedData);
         if (this.checksum !== newChecksum) {
           this.checksum = newChecksum;
-          return redis.setAsync("data", strigifiedData);
+          return redis.setAsync("data", stringifiedData);
         }
       })
       .catch(e => {
