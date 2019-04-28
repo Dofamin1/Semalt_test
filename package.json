@@ -2,7 +2,7 @@
   "name": "semalt-test",
   "version": "1.0.0",
   "description": "Nuxt.js project",
-  "author": "",
+  "author": "Anton Kovalenko",
   "private": true,
   "scripts": {
     "nuxt_dev": "nuxt",
