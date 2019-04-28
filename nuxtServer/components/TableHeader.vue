@@ -1,10 +1,11 @@
 <template >
   <v-layout row wrap>
-    <v-flex class="text-xs-center" xs4>
-      <span>{{auditType}}</span>
+    <v-flex class="text-xs-center" lg8 md8 sm8 xs6>
+      <v-card v-if="activeMenuItem != 'all'">{{auditType}}</v-card>
+      <v-card v-else>{{auditType}}</v-card>
     </v-flex>
-    <v-flex class="text-xs-center" xs4>
-      <span>{{metricName}}</span>
+    <v-flex class="text-xs-center" lg4 md4 sm4 xs6>
+      <v-card>{{metricName}}</v-card>
     </v-flex>
   </v-layout>
 </template>
@@ -24,7 +25,7 @@ export default {
     metricName() {
       if (this.activeMenuItem == "byOpportunity") return "Estimated savings";
       else if (this.activeMenuItem == "byScore") return "Score (from 0 to 1)";
-      else return null;
+      else return "-";
     }
   }
 };
