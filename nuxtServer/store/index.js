@@ -3,7 +3,6 @@ export const state = () => ({
   activeMenuItem: "byOpportunity"
 });
 
-export const getters = {};
 export const mutations = {
   setAudits(state, data) {
     state.audits = Object.values(data);
