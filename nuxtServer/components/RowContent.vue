@@ -1,8 +1,10 @@
 <template >
-  <div>
-    <div class="auditNumber">{{index + 1}}</div>
-    <span>{{auditItem.title}}</span>
-    <div class="measurements">
+  <v-layout row wrap>
+    <v-flex lg10 md10 sm8 xs6>
+      <div class="auditNumber">{{index + 1}}</div>
+      <span>{{auditItem.title}}</span>
+    </v-flex>
+    <v-flex lg2 md2 sm4 xs6 class="text-xs-right">
       <span
         v-if="activeMenuItem == 'byOpportunity'"
         :class="`mr-2 boldText ${colorOfTime}`"
@@ -11,8 +13,8 @@
         <span :class="`mr-2 boldText ${colorOfScore}`">{{score}}</span>
         <v-progress-circular :value="progressValue" :color="progressColor"></v-progress-circular>
       </template>
-    </div>
-  </div>
+    </v-flex>
+  </v-layout>
 </template>
     
 
@@ -40,9 +42,7 @@ export default {
       else return "greenText";
     },
     score() {
-      return this.auditItem.score == 1
-        ? "1 ( excellent )"
-        : this.auditItem.score;
+      return this.auditItem.score == 1 ? "1 (excellent)" : this.auditItem.score;
     },
 
     colorOfTime() {
@@ -75,11 +75,6 @@ export default {
   margin-right: 2%;
   color: #325199;
   font-weight: 500;
-}
-.measurements {
-  display: inline-block;
-  float: right;
-  margin-right: 2%;
 }
 .boldText {
   font-weight: 800;
