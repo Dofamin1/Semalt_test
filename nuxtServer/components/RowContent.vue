@@ -11,7 +11,7 @@
       >{{timeToImprove}}</span>
       <template v-else-if="activeMenuItem == 'byScore'">
         <span :class="`mr-2 boldText ${colorOfScore}`">{{score}}</span>
-        <v-progress-circular :value="progressValue" :color="progressColor"></v-progress-circular>
+        <v-progress-circular :value="progressValue" class="mr-2" :color="progressColor"></v-progress-circular>
       </template>
     </v-flex>
   </v-layout>

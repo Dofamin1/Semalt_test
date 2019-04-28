@@ -24,7 +24,7 @@ export default {
     metricName() {
       if (this.activeMenuItem == "byOpportunity") return "Estimated savings";
       else if (this.activeMenuItem == "byScore") return "Score (from 0 to 1)";
-      else return "-";
+      else return "No sorting";
     }
   }
 };
