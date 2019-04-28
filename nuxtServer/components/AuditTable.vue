@@ -1,25 +1,31 @@
 <template >
-  <v-expansion-panel>
-    <v-expansion-panel-content v-for="(item, i) in auditsToShow" :key="i">
-      <template v-slot:header>
-        <RowContent :auditItem="item" :index="i"></RowContent>
-      </template>
-      <v-card>
-        <v-card-text class="indigo lighten-5">
-          <span v-html="description(item)"></span>
-        </v-card-text>
-      </v-card>
-    </v-expansion-panel-content>
-  </v-expansion-panel>
+  <div>
+    <TableHeader></TableHeader>
+    <v-expansion-panel>
+      <v-expansion-panel-content v-for="(item, i) in auditsToShow" :key="i">
+        <template v-slot:header>
+          <RowContent :auditItem="item" :index="i"></RowContent>
+        </template>
+
+        <v-card>
+          <v-card-text class="indigo lighten-5">
+            <span v-html="description(item)"></span>
+          </v-card-text>
+        </v-card>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import RowContent from "./RowContent";
+import TableHeader from "./TableHeader";
 export default {
   name: "AuditTable",
   components: {
-    RowContent
+    RowContent,
+    TableHeader
   },
   computed: {
     ...mapState(["audits", "activeMenuItem"]),
@@ -69,25 +75,4 @@ export default {
 </script>
 
 <style>
-.auditIndex {
-  display: inline-block;
-  margin-right: 2%;
-  color: #325199;
-  font-weight: 500;
-}
-.score {
-  display: inline-block;
-  float: right;
-  margin-right: 10%;
-  color: #325199;
-  font-weight: 500;
-}
-.redScore {
-  color: red;
-  font-weight: 800;
-}
-.greenScore {
-  color: green;
-  font-weight: 800;
-}
 </style>
