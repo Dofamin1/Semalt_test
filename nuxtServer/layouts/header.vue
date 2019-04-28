@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <v-app>
-      <v-tabs color="indigo darken-4" v-model="activeMenuItemWrapper" dark slider-color="yellow">
-        <v-tab v-for="(item, index) in menuItems" :key="index" ripple>{{ item.title }}</v-tab>
-      </v-tabs>
-      <nuxt/>
-    </v-app>
-  </div>
+  <v-app>
+    <v-tabs color="indigo darken-4" v-model="activeMenuItemWrapper" dark slider-color="yellow">
+      <v-tab v-for="(item, index) in menuItems" :key="index" ripple>{{ item.title }}</v-tab>
+    </v-tabs>
+    <nuxt/>
+  </v-app>
 </template>
 
 <script>

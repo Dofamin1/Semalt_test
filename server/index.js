@@ -1,8 +1,8 @@
 const cluster = require("cluster");
-const DataService = require("./modules/dataService");
-const redisController = require("./modules/redis");
 
 if (cluster.isMaster) {
+  const DataService = require("./modules/dataService");
+  const redisController = require("./modules/redis");
   const os = require("os");
   const dataService = new DataService();
   const cpus = os.cpus().length;

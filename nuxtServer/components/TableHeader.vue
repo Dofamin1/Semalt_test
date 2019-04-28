@@ -1,8 +1,7 @@
 <template >
   <v-layout row wrap>
     <v-flex class="text-xs-center" lg8 md8 sm8 xs6>
-      <v-card v-if="activeMenuItem != 'all'">{{auditType}}</v-card>
-      <v-card v-else>{{auditType}}</v-card>
+      <v-card>{{auditType}}</v-card>
     </v-flex>
     <v-flex class="text-xs-center" lg4 md4 sm4 xs6>
       <v-card>{{metricName}}</v-card>
